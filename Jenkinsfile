@@ -5,8 +5,9 @@ node{
 }
     }
     stage('notification'){
+    env.ForEmailPlugin = env.WORKSPACE
     emailext attachLog: true, attachmentsPattern: 'os_details.txt',
-     body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+     body: '${FILE, path="os_details.txt"}',
      subject: "OSDetails",
      mimeType: 'text/html',
 	 to: '$email'
