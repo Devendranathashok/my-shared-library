@@ -9,11 +9,11 @@ node{
     stage('notification') { 
     emailext (
     attachLog: true,
-    attachmentsPattern: 'os_details.txt', 
+    //attachmentsPattern: 'os_details.txt', 
 	body: """
 	STARTED: Job \'${env.JOB_NAME} [${env.BUILD_NUMBER}]\':
 	Check console output at "${env.JOB_NAME} [${env.BUILD_NUMBER}]"
-	""", recipientProviders: [developers()], subject: 'subject: "os details",', 
+	""", subject: 'subject: "os details",', 
 	to: '$email' )}
 // stage('notification'){
 //     stage('notification'){
