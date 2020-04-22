@@ -1,16 +1,5 @@
-#!/usr/bin/groovy
-def call(body) {
-    // evaluate the body block, and collect configuration into the object
-    def config = [:]
-    body.resolveStrategy = Closure.DELEGATE_FIRST
-    body.delegate = config
-    body()
-   def username = config.user
-   def hostname = config.hostname
-   def email=config.email
-
-    
-    stage(os details){
+node{
+     stage(osdetails){
         sshagent(['ubuntucreds']) {
     sh 'ssh -o StrictHostKeyChecking=no -l ${username} ${hostname} cat /etc/*-release '
 }
@@ -24,3 +13,5 @@ def call(body) {
      to: ${email} )
     }
 }
+   
+
