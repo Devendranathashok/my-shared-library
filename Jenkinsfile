@@ -5,6 +5,9 @@ node{
 }
     }
     stage('notification'){
-    emailext attachmentsPattern: '/var/lib/jenkins/workspace/osdetails/os_details.txt', body: 'osdetails', subject: 'OsDetails', to: '$email', attachLog: true
+    emailext attachLog: true, attachmentsPattern: '/var/lib/jenkins/workspace/osdetails/os_details.txt',
+     body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+     subject: "OSDetails",
+	 to: '$email'
     }
 }
