@@ -1,15 +1,10 @@
 node{
      stage('osdetails'){
         sshagent(['remotehostcreds']) {
-    sh 'ssh -o StrictHostKeyChecking=no  $username@$hostname cat /etc/os-release '
+    sh 'ssh -o StrictHostKeyChecking=no  $username@$hostname cat /etc/os-release >> os_details.txt '
 }
     }
-    stage ('notification'){
-    emailext( 
-     attachLog: true,
-     body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-     recipientProviders: [developers(), requestor()],
-     subject: "OS Details",
-     to: ${email} )
+    stage('notification'){
+    emailext attachmentsPattern: '**/os_details.txt', body: 'osdetails', subject: 'OsDetails', to: '$email', attachLog: true
     }
 }
