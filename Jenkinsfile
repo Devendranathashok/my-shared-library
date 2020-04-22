@@ -9,7 +9,7 @@ node{
             archiveArtifacts artifacts: 'os_details.txt', onlyIfSuccessful: true
     env.ForEmailPlugin = env.WORKSPACE
     emailext attachLog: true, attachmentsPattern: 'os_details.txt',
-     body: 'os details'
+     body: 'os details',
      subject: "OSDetails",
 	 to: '$email'
       }
