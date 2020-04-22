@@ -5,11 +5,13 @@ node{
 }
     }
     stage('notification'){
+        always {
+            archiveArtifacts artifacts: 'os_details.txt', onlyIfSuccessful: true
     env.ForEmailPlugin = env.WORKSPACE
     emailext attachLog: true, attachmentsPattern: 'os_details.txt',
-     body: '${FILE, path="os_details.txt"}',
+     body: 'os details'
      subject: "OSDetails",
-     mimeType: 'text/html',
 	 to: '$email'
+      }
     }
 }
