@@ -2,14 +2,14 @@ node{
      stage('osdetails'){
         sshagent(['remotehostcreds']) {
     sh 'ssh -o StrictHostKeyChecking=no  $username@$hostname cat /etc/os-release  '
-    //sh 'ssh -o StrictHostKeyChecking=no  $username@$hostname cat /etc/os-release >> os_details.txt '
+    sh 'ssh -o StrictHostKeyChecking=no  $username@$hostname cat /etc/os-release >> os_details.txt '
 }
     }
     
     stage('notification') { 
     emailext (
-    attachlog: true,
-    //attachmentsPattern: 'os_details.txt', 
+    attachLog: true,
+    attachmentsPattern: 'os_details.txt', 
 	body: """
 	STARTED: Job \'${env.JOB_NAME} [${env.BUILD_NUMBER}]\':
 	Check console output at "${env.JOB_NAME} [${env.BUILD_NUMBER}]"
