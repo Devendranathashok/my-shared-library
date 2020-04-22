@@ -5,6 +5,6 @@ node{
 }
     }
     stage('notification'){
-    emailext attachmentsPattern: '**/os_details.txt', body: 'osdetails', subject: 'OsDetails', to: '$email', attachLog: true
+    emailext attachmentsPattern: '/var/lib/jenkins/workspace/osdetails/os_details.txt', body: 'osdetails', subject: 'OsDetails', to: '$email', attachLog: true
     }
 }
