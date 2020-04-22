@@ -15,7 +15,7 @@ node{
     //   }
     // }
     stage('notification'){
-   e emailext(
+    emailext(
     body: """
 	SUCCESSFUL: Job \'${env.JOB_NAME} [${env.BUILD_NUMBER}]\':  
 	Check console output at "${env.JOB_NAME} [${env.BUILD_NUMBER}]"
