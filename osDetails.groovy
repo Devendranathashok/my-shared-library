@@ -1,7 +1,7 @@
 node{
      stage('osdetails'){
         sshagent(['remotehostcreds']) {
-    sh 'ssh -o StrictHostKeyChecking=no  $username@$hostname cat /etc/*-release '
+    sh 'ssh -o StrictHostKeyChecking=no  $username@$hostname cat /etc/os-release '
 }
     }
     stage ('notification'){
