@@ -5,14 +5,14 @@ def call(body) {
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
     body()
-    username = config.user
-    hostname = config.hostname
-    email=config.email
+   def username = config.user
+   def hostname = config.hostname
+   def email=config.email
 
     
     stage(os details){
         sshagent(['ubuntucreds']) {
-    sh 'ssh -o StrictHostKeyChecking=no -l ${username} ${hostname} cat /etc/*-release >> os_details.txt '
+    sh 'ssh -o StrictHostKeyChecking=no -l ${username} ${hostname} cat /etc/*-release '
 }
     }
     stage (notification){
