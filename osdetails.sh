@@ -10,7 +10,7 @@ echo ${HOSTS[i]}
 
 IPAddress=${HOSTS[i]}
 
-ssh -t ashok@${HOSTS[i]} '(
+ssh -t $2@${HOSTS[i]} '(
 
     
 
