@@ -30,7 +30,7 @@ echo "FQDN :- `hostname --all-fqdns`"
 
 echo "Version details :- `uname -a | cut -d " " -f 3`"
 
-echo "Release :- `cat /etc/redhat-release`"
+echo "Release :- `cat /etc/os-release`"
 
 IPAddress=$(hostname -I)
 
@@ -78,7 +78,6 @@ echo "================"
 
 echo "Telnet connected to ${HOSTS[i]} Port 22 :- `(echo >/dev/tcp/${HOSTS[i]}/22) &>/dev/null && echo "Port Open" || echo "Port Closed"`"
 
-echo "Telnet connected to ${HOSTS[i]} Port 4122 :- `(echo >/dev/tcp/${HOSTS[i]}/4122) &>/dev/null && echo "Port Open" || echo "Port Closed"`"
 
 echo "======================================================================"
 
